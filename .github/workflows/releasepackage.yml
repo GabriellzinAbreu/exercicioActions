@@ -8,6 +8,7 @@ on:
         required: true # Torna o campo obrigatório
         default: '1.0.0' # valor padrao
 
+# da permissao ao workflow
 permissions:
   contents: write
 
