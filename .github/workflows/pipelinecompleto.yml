@@ -1,22 +1,22 @@
 name: Criar pipeline completo GitHub Pages
 
 on:
-  push:                     # Quando ocorrer um push (em qualquer branch)
-
- # Necessário dar permissoes
+  push:                     # Quando ocorrer um push 
+    
 permissions:
-  contents: write          
+  contents: write
 
 jobs:
   first-job:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-latest
 
     steps:
       - name: Baixar código do repositório
-        uses: actions/checkout@v4   # Baixa seu código (index.html, CSS, etc.)
+        uses: actions/checkout@v4
 
       - name: Publicar no GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3  # Action pronta pra publicar sites
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Permissão automática
-          publish_dir: .       # Publica tudo da raiz do projeto (index.html)
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .            # publica todo o conteúdo da raiz
+          publish_branch: gh-pages  # garante que publique na branch gh-pages
