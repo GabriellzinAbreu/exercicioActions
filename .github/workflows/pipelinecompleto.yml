@@ -19,4 +19,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .            # publica todo o conteúdo da raiz
-          publish_branch: gh-pages  # garante que publique na branch gh-pages
+          publish_branch: gh-teste  # garante que publique na branch gh-pages
