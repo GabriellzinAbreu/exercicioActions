@@ -1,12 +1,16 @@
-name: Deploy to GitHub Pages
+name: Deploy static site to GitHub Pages
 
+# dispara em qualquer push (ajuste branch se quiser limitar)
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]   # troque para "master" se sua branch principal for master
+    # se quiser publicar em push para qualquer branch, use:
+    # branches: ["**"]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       pages: write
@@ -16,16 +20,18 @@ jobs:
       name: github-pages
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload artifact (site files)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./ # onde está o index.html
+          # envia toda a raiz do repositório. Se preferir enviar apenas uma pasta,
+          # mude para e.g. path: ./dist ou path: ./public
+          path: ./
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
